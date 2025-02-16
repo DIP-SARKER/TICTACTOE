@@ -28,6 +28,7 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   List<String> board = List.filled(9, '');
   String turn = "✕";
+  String prevturn = "✕";
   String name1 = "Player 1";
   String name2 = "Player 2";
   int score1 = 0, score2 = 0;
@@ -55,7 +56,13 @@ class HomePageState extends State<HomePage> {
   void resetGame() {
     setState(() {
       board = List.filled(9, '');
-      turn = '✕';
+      if (prevturn == '✕') {
+        turn = '◯';
+        prevturn = '◯';
+      } else {
+        turn = '✕';
+        prevturn = '✕';
+      }
     });
   }
 
