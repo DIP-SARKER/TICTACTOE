@@ -9,11 +9,82 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // Root widget
-      home: HomePage(),
+      home: Home(),
       theme: ThemeData(
         fontFamily: 'Arial', // Set custom font globally
       ),
       debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.indigo,
+        toolbarHeight: 100,
+        title: Text('Tic Tac Toe'),
+        centerTitle: true,
+        elevation: 25,
+        shadowColor: Colors.indigo,
+        titleTextStyle: TextStyle(
+          fontSize: 40,
+          fontFamily: 'LondrinaSketch', // Apply custom font to the app bar text
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomePage()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.indigo,
+                iconColor: Colors.white,
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                textStyle: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              child: Text('Player vs Player'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to Player vs AI screen
+              },
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.indigo,
+                iconColor: Colors.white,
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                textStyle: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              child: Text('Player vs AI'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
